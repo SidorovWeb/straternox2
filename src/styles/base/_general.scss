@@ -50,7 +50,7 @@ body {
 
 // заглушка при ленивой загрузки
 img.lazy {
-  background-image: url(data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7);
+  background-image: url(data:image/gif;base64,R0lGODlhCgAKAPAAAPf3+AAAACH5BAAAAAAALAAAAAAKAAoAAAIIhI+py+0PYysAOw==);
   transition: transform 0.3s ease;
 }
 
@@ -96,8 +96,20 @@ img.lazy {
 
 //  Удалить это тест
 h1 {
-  @include fluidFontSize(25px, 67px, 767.98px, 1920px);
+  @include fluidFontSize(25px, 47px, 768px, 1920px);
   color: var(--black);
+}
+
+h2 {
+  font-size: 18px;
+  color: var(--blue);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.img-wrapp,
+.custom-select-wrapper {
+  max-width: 300px;
 }
 
 p {
@@ -110,6 +122,6 @@ p {
 //     }
 // }
 
-.c1 {
+.inner {
   background-color: red;
 }

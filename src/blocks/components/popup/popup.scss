@@ -94,11 +94,11 @@
 
   cursor: default;
 
-  @media screen and (max-width: 992px) {
+  @include medium {
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 480px) {
+  @include x-small-480 {
     padding: 40px 20px 40px 20px;
   }
 
@@ -116,7 +116,7 @@
     margin-bottom: 8px;
     display: block;
 
-    @media screen and (max-width: 480px) {
+    @include x-small-480 {
       font-size: 25px;
       line-height: 38px;
     }
@@ -129,7 +129,7 @@
     margin-bottom: 24px;
     padding-right: 42px;
 
-    @media screen and (max-width: 480px) {
+    @include x-small-480 {
       padding-right: 0;
     }
   }

@@ -1,0 +1,98 @@
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.nav {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+
+  @include medium {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: var(--transition);
+    background: rgba(23, 35, 53, 0.8);
+
+    &.menu-open {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      z-index: 9;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    padding-right: 58px;
+    padding-bottom: 5px;
+
+    @include medium {
+      height: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 58px;
+      background-color: var(--white);
+      width: 70%;
+      box-shadow: 10px 0px 30px -6px rgba(50, 53, 61, 1);
+      cursor: default;
+    }
+
+    @media screen and (max-width: 480px) {
+      width: 80%;
+      padding-left: 20px;
+    }
+
+    & > *:not(:last-child) {
+      margin-right: 56px;
+      @include large {
+        margin-right: 30px;
+      }
+
+      @include medium {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__link {
+    color: var(--dark);
+
+    &:hover {
+      color: green;
+    }
+
+    &:active {
+      color: red;
+    }
+
+    @include medium {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}

@@ -72,6 +72,7 @@
         "css-vars-ponyfill": "^2.3.1",
         "object-fit-images": "^3.2.4",
         "svg4everybody": "^2.1.9",
+        "swiper": "^6.0.4",
         "vanilla-lazyload": "^16.0.0"
     },
     "husky": {
