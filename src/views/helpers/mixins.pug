@@ -1,0 +1,20 @@
+mixin icon(name,mod)
+	if(mod)
+		svg(class="svg-sprite-icon icon-" + name + ' ' + mod)
+			use(xlink:href="img/sprites/sprite.svg#" + name)
+	else
+		svg(class="svg-sprite-icon icon-" + name)
+			use(xlink:href="img/sprites/sprite.svg#" + name)
+
+
+//- Lazy Load Placeholder Generator https://webdesign-master.ru/services/lazy/
+
+mixin jpg(img,width,height,alt,placeholder)
+	picture
+		source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+		img.lazy.img--poly( alt=alt, src=placeholder, data-src=`${img}.jpg`,width=width, height=height)
+
+mixin png(img,width,height,alt,placeholder)
+	picture
+		source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+		img.lazy.img--poly( alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height)

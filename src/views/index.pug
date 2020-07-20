@@ -1,0 +1,28 @@
+extends layouts/default
+include helpers/mixins
+
+block variables
+	- const title = "Главная"
+	- const name = "main-page"
+
+block content
+	.container
+		button.btn.btn--default.btn-popup popup
+		h1.h1-test Адаптивный текст
+		h2 Колонки
+		.row
+			.coll-3
+				.c1
+					+jpg('img/1','1200','750','Горы','data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACH5BAEAAAEALAAAAAAIAAUAAAIFjI+py1gAOw==')
+			.coll-3
+				.c1
+					p ddwdw
+			.coll-3
+				.c1
+					p ddwdw
+			.coll-3
+				.c1
+					p ddwdw
+block scripts
+	script(src="js/main.js")
+	script(src="js/vendor.js")

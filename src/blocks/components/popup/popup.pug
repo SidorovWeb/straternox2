@@ -1,0 +1,32 @@
+.popup-wrapper(data-modal)
+	.popup
+		.popup__inner
+			.popup__header
+				span.popup__title Заказать звонок
+				p.popup__subtitle Оставьте свои контактные данные, с вами свяжутся в течении 40 минут
+			.popup__content
+				.form-popup.popup__form-popup
+					form(id="form-popup-call")
+						.form-popup__block
+							label(for='popup-name-call')
+								input#popup-name-call(type='text', placeholder='Имя')
+						.form-popup__block
+							label(for='popup-phone-call')
+								input#popup-phone-call.imask(type='tel', required='required' placeholder="Номер телефона")
+						.form-popup__block-btn
+							button.btn.btn--primary.btn--midle.form-popup__btn(type='submit') Отправить
+		.popup-passed-info
+			<svg class="success-check" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+				<circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+				<polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+			</svg>
+			span.popup-passed-info__title Мы скоро перезвоним :)
+		.popup-error-info
+			<svg class="error-check" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+				<circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+				<line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+				<line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+			</svg>
+			span.popup-passed-info__title Что-то пошло не так :(
+		button.btn.popup__icon-close-wrapper.popup__close
+			+icon('close', 'popup__icon-close')

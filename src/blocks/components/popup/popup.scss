@@ -1,0 +1,264 @@
+.popup-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  background: rgba(23, 35, 53, 0.8);
+  transition: var(--transition);
+  z-index: 99;
+  padding: 20px;
+  cursor: pointer;
+
+  @media screen and (max-height: 568px) {
+    display: block;
+  }
+
+  &.modal-open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition: var(--transition);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &.is-passed,
+  &.is-error {
+    .popup__close {
+      display: none;
+    }
+
+    .popup__form-popup,
+    .popup__header {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+
+  &.is-passed {
+    .popup-passed-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+  }
+
+  &.is-error {
+    .popup-error-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+  }
+}
+
+.popup-passed-info,
+.popup-error-info {
+  display: none;
+  opacity: 0;
+  height: 80px;
+  width: 100%;
+  pointer-events: none;
+  visibility: hidden;
+  transition: var(--transition);
+
+  &__title {
+    font-family: var(--p-bold);
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.popup {
+  position: relative;
+  max-width: 380px;
+  padding: 40px;
+  border-radius: 24px;
+  color: var(--black);
+  background: var(--main-bg);
+
+  cursor: default;
+
+  @media screen and (max-width: 992px) {
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 40px 20px 40px 20px;
+  }
+
+  &__header {
+    transition: var(--transition);
+  }
+  &__form-popup {
+    transition: var(--transition);
+  }
+
+  &__title {
+    font-family: var(--p-bold);
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 8px;
+    display: block;
+
+    @media screen and (max-width: 480px) {
+      font-size: 25px;
+      line-height: 38px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 24px;
+    padding-right: 42px;
+
+    @media screen and (max-width: 480px) {
+      padding-right: 0;
+    }
+  }
+
+  &__icon-close-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    background-color: #f7f7f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f1f2f4;
+    }
+  }
+
+  &__icon-close {
+    width: 13px;
+    height: 13px;
+    fill: #556277;
+  }
+}
+
+.form-popup {
+  &__block {
+    margin-bottom: 8px;
+  }
+
+  input {
+    height: 56px;
+  }
+
+  input,
+  textarea {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #ebecef !important;
+    width: 100%;
+
+    padding: 16px;
+    transition: var(--transition);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 24px;
+
+    &:hover {
+      border: 1px solid #dddfe3 !important;
+    }
+
+    &:focus {
+      border: 1px solid #3fc7f3 !important;
+    }
+  }
+
+  textarea {
+    resize: none;
+    height: 102px;
+  }
+
+  &__block-btn {
+    padding-top: 32px;
+  }
+}
+
+.success-check,
+.error-check {
+  width: 50px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  &.circle {
+    -webkit-animation: dash 0.9s ease-in-out;
+    animation: dash 0.9s ease-in-out;
+  }
+  &.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+    animation: dash 0.9s 0.35s ease-in-out forwards;
+  }
+  &.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+    animation: dash-check 0.9s 0.35s ease-in-out forwards;
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}

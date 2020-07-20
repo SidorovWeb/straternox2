@@ -1,0 +1,136 @@
+@mixin row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@mixin coll {
+	box-sizing: border-box;
+	word-wrap: break-word;
+	// 20px
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+@mixin media-lg {
+	@media screen and (max-width: 1199.98px) {
+		@content
+	}
+}
+
+@mixin media-md {
+	@media screen and (max-width: 991.98px) {
+		@content
+	}
+}
+
+@mixin media-sm {
+	@media screen and (max-width: 767.98px) {
+		@content
+	}
+}
+
+@mixin media-esd {
+	@media screen and (max-width: 575.98px) {
+		@content
+	}
+}
+
+// fluidFontSize
+
+@function strip-unit($number) {
+	@if type-of($number)=='number'and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+	$f-min: strip-unit($f-min);
+	$f-max: strip-unit($f-max);
+	$w-min: strip-unit($w-min);
+	$w-max: strip-unit($w-max);
+
+	$k: ($f-max - $f-min)/($w-max - $w-min);
+	$b: $f-min - $k * $w-min;
+
+	$b: $b + $units;
+
+	@return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+	font-size: $f-min;
+
+	@media (min-width: $w-min) {
+		@if ($fallback) {
+			font-size: $fallback;
+		}
+
+		font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+	}
+
+	@media (min-width: $w-max) {
+		font-size: $f-max;
+	}
+}
+
+// fluidFontSize example
+// .fluid-font-size {
+// 	@include fluidFontSize(16px, 24px, 480px, 1280px, 18px);
+// }
+
+// placeholder
+
+@mixin placeholder {
+	::-webkit-input-placeholder {
+		@content
+	}
+
+	:-moz-placeholder {
+		@content
+	}
+
+	::-moz-placeholder {
+		@content
+	}
+
+	:-ms-input-placeholder {
+		@content
+	}
+}
+
+@mixin not-last {
+	&>* {
+		&:not(:last-child) {
+			@content;
+		}
+	}
+}
+
+
+// Max breakpoint
+$max-breakpoint: var(--container-width);
+
+$wide-screen: "(min-width: #{$max-breakpoint}px)";
+
+@function get-vw($target) {
+	$vw-context: ($max-breakpoint * .01) * 1px;
+	@return ($target / $vw-context) * 1vw;
+}
+
+@mixin max-bp {
+	@media #{$wide-screen} {
+		@content
+	}
+}
+
+
+// px to rem
+
+$browser-context: var(--font-size); // Default
+
+@function rem($pixels, $context: $browser-context) {
+	@return #{$pixels/$context}rem;
+}

@@ -1,0 +1,31 @@
+:root {
+  --font-size: 16px;
+  --container-width: 1220px;
+  --vh: 100vh;
+  --color-primary: #0060df;
+  --color-secondary: #fbfbfe;
+  --color-accent: #fd6f53;
+  --main-bg: #ffffff;
+  --white: #ffffff;
+  --black: #000000;
+  --dark: #2a333d;
+  --blue: #007bff;
+  --grey: #e3e3e3;
+
+  // Other
+  --transition: 0.3s ease;
+
+  // Fonts
+  --p-reg: 'ProximaNovaRegular', sans-serif;
+  --p-bold: 'ProximaNovaBold', sans-serif;
+  --p-light: 'ProximaNovaLight', sans-serif;
+}
+
+// Для поддерки ei11 необходимо также добавить переменные в switcherThemes.js => const themeDark
+html.theme-dark {
+  --color-primary: #17ed90;
+  --color-secondary: #243133;
+  --color-accent: #12cdea;
+  --main-bg: #000000;
+  --black: #ffffff;
+}

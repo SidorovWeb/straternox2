@@ -1,0 +1,56 @@
+block variables
+include ../helpers/mixins.pug
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		title #{title}
+
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		meta(property='og:image', content='img/hero/mobile-img.jpg')
+		meta(name='theme-color', content='#061626')
+		meta(name='msapplication-navbutton-color', content='#061626')
+		meta(name='apple-mobile-web-app-status-bar-style', content='#061626')
+		meta(name="theme-color" content="#061626")
+		meta(name="apple-mobile-web-app-status-bar-style" content="061626")
+		link(rel="icon" href="img/favicons/favicon.png" type="image/png")
+		link(rel="preload" as="font" href="fonts/ProximaNova-Regular.woff2" type="font/woff2" crossorigin)
+		link(rel="preload" as="font" href="fonts/ProximaNova-Bold.woff2" type="font/woff2" crossorigin)
+		link(rel="preload" as="font" href="fonts/ProximaNova-Light.woff2" type="font/woff2" crossorigin)
+		script.
+			function setTheme(themeName) {
+				localStorage.setItem('theme', themeName);
+				document.documentElement.className = themeName;
+			}
+
+			function toggleTheme() {
+				if (localStorage.getItem('theme') === 'theme-dark') {
+					setTheme('theme-light');
+					} else {
+						setTheme('theme-dark');
+					}
+				}
+
+			(function () {
+				if (localStorage.getItem('theme') === 'theme-dark') {
+					setTheme('theme-dark');
+					} else {
+					setTheme('theme-light');
+				}
+			})();
+		link(rel="stylesheet" href="styles/main.css")
+
+	body(class=name)
+		.grid
+			header.header
+				include  ../../blocks/modules/header/header.pug
+			main.content
+				block content
+			.sidebar
+				h1 This is my sidebar
+			footer.footer
+				include  ../../blocks/modules/footer/footer.pug
+		include ../../blocks/components/popup/popup.pug
+		block scripts
