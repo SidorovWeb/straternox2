@@ -1,27 +1,59 @@
 const select = () => {
-  for (const dropdown of document.querySelectorAll('.custom-select-wrapper')) {
-    dropdown.addEventListener('click', function () {
-      this.querySelector('.custom-select').classList.toggle('open')
-    })
-  }
+  const selects = document.querySelectorAll('.custom-select')
+  const options = document.querySelectorAll('.custom-select__option')
 
-  for (const option of document.querySelectorAll('.custom-option')) {
-    option.addEventListener('click', function () {
-      if (!this.classList.contains('selected')) {
-        this.parentNode.querySelector('.custom-option.selected').classList.remove('selected')
-        this.classList.add('selected')
-        this.closest('.custom-select').querySelector('.custom-select__trigger span').textContent = this.textContent
+  selects.forEach((el) => {
+    const currentSelect = el.querySelector('.selected')
+    const currentTrigger = el.querySelector('.custom-select__trigger')
+    createTriggerText(currentSelect, currentTrigger)
+    createInputHidden(currentSelect, el)
+
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      el.classList.toggle('open')
+    })
+  })
+
+  options.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      if (!el.classList.contains('selected')) {
+        el.parentNode.querySelector('.selected').classList.remove('selected')
+        el.classList.add('selected')
+        el.closest('.custom-select').querySelector('.custom-select__trigger span').textContent = el.textContent
+        createInputHidden(el, el.closest('.custom-select'))
       }
     })
-  }
+  })
 
-  window.addEventListener('click', function (e) {
+  window.addEventListener('click', (e) => {
     for (const select of document.querySelectorAll('.custom-select')) {
       if (!select.contains(e.target)) {
         select.classList.remove('open')
       }
     }
   })
+}
+
+function createTriggerText(customSelectName, triggerName) {
+  const span = document.createElement('span')
+  span.textContent = customSelectName.textContent
+  triggerName.prepend(span)
+}
+
+function createInputHidden(option, wrapper) {
+  try {
+    wrapper.querySelector('.input-hidden').remove()
+  } catch (error) {console.log(error)}
+
+  const input = document.createElement('input')
+  input.setAttribute('type', 'hidden')
+  input.setAttribute('name', option.dataset.value)
+  input.setAttribute('value', option.dataset.value)
+  input.classList.add('input-hidden')
+  wrapper.append(input)
 }
 
 export default select

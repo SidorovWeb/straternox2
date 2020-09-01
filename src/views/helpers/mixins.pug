@@ -9,12 +9,22 @@ mixin icon(name,mod)
 
 //- Lazy Load Placeholder Generator https://webdesign-master.ru/services/lazy/
 
-mixin jpg(img,width,height,alt,placeholder)
-	picture
-		source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-		img.lazy.img--poly( alt=alt, src=placeholder, data-src=`${img}.jpg`,width=width, height=height)
+mixin jpg(boolean,img,width,height,alt,placeholder,additionalClassName, classNameSwiperLazy)
+	if boolean
+		picture
+			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+			img.lazy.img--poly.placeholder( class=additionalClassName alt=alt, src=placeholder, data-src=`${img}.jpg`,width=width, height=height)
+	if classNameSwiperLazy
+		picture
+			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+			img.lazy.img--poly.placeholder( class=additionalClassName, data-slider-class=true, alt=alt, src=placeholder ,data-src=`${img}.jpg`,width=width, height=height)
 
-mixin png(img,width,height,alt,placeholder)
-	picture
-		source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-		img.lazy.img--poly( alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height)
+mixin png(boolean,img,width,height,alt,placeholder,additionalClassName, classNameSwiperLazy)
+	if boolean
+		picture
+			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+			img.lazy.img--poly( class=additionalClassName alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height)
+	if classNameSwiperLazy
+		picture
+			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
+			img.img--poly( class=additionalClassName, data-slider-class=true, alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height)

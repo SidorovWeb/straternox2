@@ -23,11 +23,11 @@ $right: 60px;
 
       &:before {
         position: absolute;
-        content: '';
+        content: "";
         height: 1px;
         width: 12px;
         right: -$right/2 - 6px;
-        background-color: var(--grey);
+        background-color: $grey;
         top: 50%;
         transform: translateY(-50%);
 
@@ -39,25 +39,25 @@ $right: 60px;
   }
 
   li {
-    color: var(--black);
+    color: $black;
     a {
       font-size: 16px;
       line-height: 24px;
       color: inherit;
-      transition: var(--transition);
+      transition: $transition;
 
       &:hover {
-        color: var(--grey);
+        color: $grey;
       }
 
       &:active {
-        color: var(--dark);
+        color: $dark;
       }
     }
 
     &.active {
       a {
-        color: var(--color-primary);
+        color: $color-primary;
       }
     }
   }

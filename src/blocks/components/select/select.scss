@@ -1,126 +1,115 @@
 $height: 30px;
 
-.custom-select-wrapper {
+.custom-select {
   position: relative;
   user-select: none;
-  width: 100%;
-  color: var(--dark);
-}
-
-.custom-select {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #353940;
-  transition: var(--transition);
+  transition: $transition;
 
-  &:hover {
-    border-bottom: 2px solid #454a54;
-  }
-}
-
-.custom-select__trigger {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 22px;
-  height: $height;
-  line-height: $height;
-  background: transparent;
-  cursor: pointer;
-  font-size: 20px;
-  transition: inherit;
-
-  @include small {
-    justify-content: flex-start;
-    font-size: 18px;
+  &.open {
+    border-bottom: 2px solid $color-primary;
   }
 
-  &:hover {
+  &.open .custom-select__options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    animation: fadeIn 300ms;
+  }
+
+  &.open .arrow {
+    transform: rotate(-135deg);
+  }
+
+  &__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22px;
+    height: $height;
+    line-height: $height;
+    color: var(--black);
+    background: transparent;
     cursor: pointer;
-    background-color: var(--grey);
+    font-size: 20px;
+    transition: inherit;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var($grey);
+    }
+
+    &:active {
+      background-color: $color-primary;
+    }
   }
 
-  &:active {
-    background-color: var(--color-primary);
-  }
-}
-
-.custom-options {
-  position: absolute;
-  display: block;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--main-bg);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 2;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  transition: inherit;
-  overflow: hidden;
-}
-
-.custom-select.open {
-  border-bottom: 2px solid var(--color-primary);
-}
-.custom-select.open .custom-options {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-}
-
-.custom-option {
-  position: relative;
-  display: block;
-  padding: 0 22px 0 22px;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: $height;
-  cursor: pointer;
-  border-bottom: 1px solid var(--separator-color);
-  transition: inherit;
-
-  @include small {
-    font-size: 18px;
-    line-height: 50px;
+  &__options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $color-secondary;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: inherit;
+    overflow: hidden;
   }
 
-  &:last-child {
-    border-bottom: 0;
+  &__option {
+    position: relative;
+    display: block;
+    padding: 0 22px 0 22px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: $height;
+    cursor: pointer;
+    border-bottom: 1px solid $grey;
+    transition: inherit;
+
+    @include small {
+      font-size: 18px;
+      line-height: 50px;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $grey;
+    }
+
+    &:active {
+      background-color: $color-primary;
+    }
+
+    &.selected {
+      background-color: $color-primary;
+      border-bottom: 1px solid $color-primary;
+    }
   }
-}
 
-.custom-option:hover {
-  cursor: pointer;
-  background-color: var(--grey);
-}
-
-.custom-option:active {
-  background-color: var(--color-primary);
-}
-
-.custom-option.selected {
-  background-color: var(--color-primary);
-  border-bottom: 1px solid var(--color-primary);
-}
-
-.arrow {
-  position: absolute;
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  top: 50%;
-  right: 12px;
-  transform: rotate(45deg) translateY(-50%);
-  border: solid var(--color-primary);
-  border-width: 0 2px 2px 0;
-  padding: 2px;
-  transition: inherit;
-}
-
-.open .arrow {
-  transform: rotate(-135deg);
+  & .arrow {
+    position: absolute;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: 12px;
+    transform: rotate(45deg) translateY(-50%);
+    border: solid $color-primary;
+    border-width: 0 2px 2px 0;
+    padding: 2px;
+    transition: inherit;
+  }
 }

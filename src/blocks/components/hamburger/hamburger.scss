@@ -5,7 +5,7 @@
   width: 28px;
   height: 23px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: $transition;
   transform: translateY(0);
 
   @include medium {
@@ -16,7 +16,7 @@
   &:active {
     transform: translateY(1px);
     .hamburger__span {
-      background-color: var(--grey);
+      background-color: $grey;
     }
   }
 
@@ -25,26 +25,26 @@
     width: inherit;
     height: 3px;
     margin-top: 10px;
-    background-color: var(--black);
+    background-color: $black;
     transform: translateX(0) translateY(0) rotate(0);
-    transition: var(--transition);
+    transition: $transition;
     opacity: 1;
 
     &:nth-child(1) {
       top: -8px;
       width: 28px;
-      background-color: var(--black);
+      background-color: $black;
     }
 
     &:nth-child(2) {
       width: 28px;
-      background-color: var(--black);
+      background-color: $black;
     }
 
     &:nth-child(3) {
       top: 8px;
       width: 28px;
-      background-color: var(--black);
+      background-color: $black;
     }
   }
 
@@ -53,7 +53,7 @@
       & .hamburger__span {
         &:nth-child(1),
         &:nth-child(3) {
-          background-color: var(--grey);
+          background-color: $grey;
         }
 
         &:nth-child(2) {
@@ -64,11 +64,11 @@
 
     & .hamburger__span {
       background-color: transparent;
-      transition: var(--transition);
+      transition: $transition;
 
       &:nth-child(1),
       &:nth-child(3) {
-        background-color: var(--white);
+        background-color: $white;
       }
 
       &:nth-child(1) {

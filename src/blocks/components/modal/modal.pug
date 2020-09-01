@@ -1,0 +1,19 @@
+.modal-wrapper(data-modal)
+	.modal
+		.modal__inner
+			.modal__header
+				span.modal__title Заказать звонок
+				p.modal__subtitle Оставьте свои контактные данные, с вами свяжутся в течении 40 минут
+			.modal__content
+				.form-modal.modal__form-modal
+					form(id="form-modal-call")
+						.form-modal__block
+							label(for='modal-name-call')
+								input#modal-name-call(type='text', placeholder='Имя')
+						.form-modal__block
+							label(for='modal-phone-call')
+								input#modal-phone-call.imask(type='tel', required='required' placeholder="Номер телефона")
+						.form-modal__block-btn
+							button.btn.btn--primary.btn--midle.form-modal__btn(type='submit') Отправить
+		button.btn.btn--icon.modal__icon-close-wrapper.modal__close
+			+icon('close', 'modal__icon-close')

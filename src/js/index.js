@@ -5,22 +5,25 @@ import './import/objectFitImages'
 import './import/dragstart'
 import viewportOnMobile from './modules/viewportOnMobile'
 import switcherThemes from './modules/switcherThemes'
-import modals from './modules/modal'
+import modal from '../blocks/components/modal/modal'
 import select from '../blocks/components/select/select'
+import tabs from '../blocks/components/tabs/tabs'
 import swiperSlider from '../blocks/components/slider/slider'
 import hamburger from '../blocks/components/hamburger/hamburger'
 // import smoothScroll from './modules/scroll-anchors'
 
 window.addEventListener('DOMContentLoaded', () => {
-  ;('use strict')
+  ('use strict')
 
   switcherThemes()
 
   viewportOnMobile()
 
-  modals()
+  modal()
 
   select()
+
+  tabs()
 
   swiperSlider()
 

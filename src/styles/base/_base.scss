@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -17,9 +26,8 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-a,
-button {
-  outline: none;
+a {
+  display: inline-block;
 }
 
 a {

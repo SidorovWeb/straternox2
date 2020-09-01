@@ -12,37 +12,37 @@
 }
 
 @mixin e-large {
-  @media screen and (max-width: 1200px) {
+  @media (max-width: 1200px) {
     @content;
   }
 }
 
 @mixin large {
-  @media screen and (max-width: 1200px) {
+  @media (max-width: 1200px) {
     @content;
   }
 }
 
 @mixin medium {
-  @media screen and (max-width: 992px) {
+  @media (max-width: 992px) {
     @content;
   }
 }
 
 @mixin small {
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     @content;
   }
 }
 
 @mixin x-small {
-  @media screen and (max-width: 576px) {
+  @media (max-width: 576px) {
     @content;
   }
 }
 
 @mixin x-small-480 {
-  @media screen and (max-width: 480px) {
+  @media (max-width: 480px) {
     @content;
   }
 }
@@ -50,7 +50,7 @@
 // fluidFontSize
 
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if type-of($number) == "number" and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
 
@@ -123,7 +123,7 @@
 // Max breakpoint
 $max-breakpoint: var(--container-width);
 
-$wide-screen: '(min-width: #{$max-breakpoint}px)';
+$wide-screen: "(min-width: #{$max-breakpoint}px)";
 
 @function get-vw($target) {
   $vw-context: ($max-breakpoint * 0.01) * 1px;

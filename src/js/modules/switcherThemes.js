@@ -7,8 +7,8 @@ const switcherThemes = () => {
     const themeDark = {
         // Заполнить объект для поддерки ei11
         // Вносить только те переменные которые необходимо изменять
-        "--main-bg": " #000000",
-        "--black": "#ffffff",
+        "$main-bg": " #000000",
+        "$black": "#ffffff",
     };
 
     //  Заполняем объект themeLight
@@ -40,7 +40,7 @@ const switcherThemes = () => {
 
             window.setTimeout(function () {
                 document.documentElement.classList.remove("theme-transition");
-            }, 500);
+            }, 150);
 
             if (isIE11) {
                 if (localStorage.getItem("theme") === "theme-light") {

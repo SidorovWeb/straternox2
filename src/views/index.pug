@@ -11,11 +11,35 @@ block content
 	.container
 		h1.h1-test Адаптивный текст
 		h2 Switch mode
-		button.btn.switch-mode Switch
-		h2 Popup
-		button.btn.btn--default.btn-popup popup
+		button.btn.btn--normal.switch-mode Switch
+		h2 Button
+		.btn-container
+			button.btn.btn--normal Normal
+			button.btn.btn--medium Medium
+			button.btn.btn--large Large
+			a(href="#").btn Link
+			button.btn.btn--normal.btn--with-icon
+				+icon('vk')
+				span VKontakte
+			button.btn.btn--normal.btn--icon
+				+icon('vk')
+				span VKontakte
+			button.btn.btn--normal.btn--two-lines
+				span Subscribe to our newsletter
+				span(aria-hidden="true") 240K+ subscribers
+			button.btn.btn--normal.btn--primary Normal
+			button.btn.btn--normal.btn--secondary Normal
+			button.btn.btn--normal.btn--warning Normal
+			button.btn.btn--normal.btn--danger Normal
+			button.btn.btn--normal(disabled) Button
+		h2 modal
+		button.btn.btn--normal.btn-modal modal
 		h2 Select
 		include ../blocks/components/select/select.pug
+		h2 tabs
+		include ../blocks/components/tabs/tabs.pug
+		h2 checkbox
+		input(type="checkbox")
 		h2 Колонки
 		.row
 			.coll-3
@@ -32,7 +56,7 @@ block content
 					p column
 		h2 image
 		.img-wrapp
-			+jpg('img/1','1200','750','Горы','data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACH5BAEAAAEALAAAAAAIAAUAAAIFjI+py1gAOw==')
+			+jpg(true,'img/1','1200','750','Горы','data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACH5BAEAAAEALAAAAAAIAAUAAAIFjI+py1gAOw==')
 		h2 Slider
 		include ../blocks/components/slider/slider.pug
 		h2 Table

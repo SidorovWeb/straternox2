@@ -1,0 +1,32 @@
+.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+
+  &__tab {
+    display: inline-block;
+    padding: 10px 15px;
+    color: var(--black);
+    background: none;
+    cursor: pointer;
+    transition: $transition;
+
+    &.selected {
+      color: var(--black);
+      background: $grey;
+    }
+  }
+
+  &__content {
+    display: none;
+    padding: 15px;
+    color: var(--black);
+    background: $grey;
+
+    &.selected {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 300ms;
+    }
+  }
+}

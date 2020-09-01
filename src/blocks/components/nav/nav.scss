@@ -1,23 +1,5 @@
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .nav {
-  background-color: var(--white);
+  background-color: transparent;
   display: flex;
   align-items: center;
 
@@ -30,16 +12,21 @@
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
-    transition: var(--transition);
-    background: rgba(23, 35, 53, 0.8);
 
     &.menu-open {
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
-      z-index: 9;
-      transition: var(--transition);
+      z-index: 2;
       cursor: pointer;
+    }
+
+    &.menu-open .nav__list {
+      animation: slideInLeft 300ms;
+    }
+
+    &.hide .nav__list {
+      animation: slideOutLeft 200ms;
     }
   }
 
@@ -55,7 +42,7 @@
       align-items: flex-start;
       justify-content: center;
       padding-left: 58px;
-      background-color: var(--white);
+      background-color: $white;
       width: 70%;
       box-shadow: 10px 0px 30px -6px rgba(50, 53, 61, 1);
       cursor: default;
@@ -80,7 +67,7 @@
   }
 
   &__link {
-    color: var(--dark);
+    color: $dark;
 
     &:hover {
       color: green;

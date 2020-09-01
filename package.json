@@ -32,7 +32,7 @@
         "babel-loader": "^8.1.0",
         "bem-tools-core": "bem-tools/bem-tools-core",
         "bem-tools-create": "bem-tools/bem-tools-create",
-        "browser-sync": "^2.26.7",
+        "browser-sync": "^2.26.12",
         "core-js": "^3.6.5",
         "del": "^5.1.0",
         "eslint": "~7.0.0",
@@ -69,6 +69,7 @@
         "yargs": "~15.3.1"
     },
     "dependencies": {
+        "animate.css": "^4.1.0",
         "css-vars-ponyfill": "^2.3.1",
         "object-fit-images": "^3.2.4",
         "svg4everybody": "^2.1.9",
