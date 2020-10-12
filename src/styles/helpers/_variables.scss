@@ -1,5 +1,4 @@
 :root {
-  --container-width: 1220px;
   --vh: 100vh;
   --main-bg: #ffffff;
   --black: #000000;
@@ -10,6 +9,10 @@ html.theme-dark {
   --main-bg: #000000;
   --black: #ffffff;
 }
+
+// grid
+$container-width: 1220px;
+
 // color
 $color-primary: #0060df;
 $color-secondary: #5a6268;
@@ -25,8 +28,9 @@ $grey: #e3e3e3;
 $color-bg: red;
 $color-bar: #ccc;
 $gradient: linear-gradient(72deg, $color-bar, $color-bg);
+$color-overlay: rgba(23, 35, 53, 0.8);
 // Other
-$transition: 0.3s ease-out;
+$transition: 225ms ease-in-out;
 // Fonts
 $p-reg: "ProximaNovaRegular", sans-serif;
 $p-bold: "ProximaNovaBold", sans-serif;

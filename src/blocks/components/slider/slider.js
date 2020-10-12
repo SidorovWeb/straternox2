@@ -3,9 +3,8 @@ import Swiper, { Navigation, Lazy } from 'swiper'
 Swiper.use([Navigation, Lazy])
 // init Swiper:
 const swiperSlider = () => {
-  const swiper = new Swiper('.swiper-container', {
+  new Swiper('.swiper-container', {
     loop: true,
-    lazy: true,
     lazy: {
       loadPrevNext: false,
       loadOnTransitionStart: true,
@@ -16,6 +15,7 @@ const swiperSlider = () => {
       prevEl: '.swiper-button-prev',
       clickable: true,
     },
+    grabCursor: true
   })
 }
 

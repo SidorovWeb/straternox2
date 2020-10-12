@@ -21,6 +21,31 @@ if (typeof Object.assign != 'function') {
   }
 }
 
+// append IE 11
+(function (arr) {
+  arr.forEach(function (item) {
+    if (item.hasOwnProperty('append')) {
+      return;
+    }
+    Object.defineProperty(item, 'append', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function append() {
+        var argArr = Array.prototype.slice.call(arguments),
+          docFrag = document.createDocumentFragment();
+
+        argArr.forEach(function (argItem) {
+          var isNode = argItem instanceof Node;
+          docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+        });
+
+        this.appendChild(docFrag);
+      }
+    });
+  });
+})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
 // closest IE 11
 ;(function () {
   if (!Element.prototype.closest) {
@@ -70,13 +95,22 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 }
 
 // remove IE 11
-Element.prototype.remove = function () {
-  this.parentElement.removeChild(this)
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
-  for (let i = this.length - 1; i >= 0; i -= 1) {
-    if (this[i] && this[i].parentElement) {
-      this[i].parentElement.removeChild(this[i])
-    }
-  }
+// Element.prototype.remove = function () {
+//   this.parentElement.removeChild(this)
+// }
+// NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+//   for (let i = this.length - 1; i >= 0; i -= 1) {
+//     if (this[i] && this[i].parentElement) {
+//       this[i].parentElement.removeChild(this[i])
+//     }
+//   }
+// }
+
+
+if (!('remove' in Element.prototype)) {
+  Element.prototype.remove = function() {
+      if (this.parentNode) {
+          this.parentNode.removeChild(this);
+      }
+  };
 }

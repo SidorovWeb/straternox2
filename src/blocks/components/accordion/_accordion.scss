@@ -1,0 +1,38 @@
+.accordion {
+  max-width: 400px;
+
+  &__title {
+    padding: 20px;
+    width: 100%;
+    background-color: $color-bar;
+    cursor: pointer;
+
+    &.open {
+      & + .accordion__collapse {
+        height: auto;
+      }
+    }
+  }
+
+  &__collapse {
+    height: 0;
+    margin-bottom: 10px;
+    border: 1px solid $color-bar;
+    border-top: 0;
+    overflow: hidden;
+    transition-property: height;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 225ms;
+  }
+
+  &__content {
+    padding: 20px;
+  }
+}
+
+.is-collapsed {
+  height: 0;
+  transition-property: height;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 195ms;
+}

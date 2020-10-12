@@ -7,8 +7,8 @@ html(lang="ru")
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		title #{title}
-
-		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		meta(name="viewport" content="width=device-width, initial-scale=no, maximum-scale=1, minimum-scale=1")
+		meta(name="description" content="Сайт об HTML и создании сайтов")
 		meta(property='og:image', content='img/hero/mobile-img.jpg')
 		meta(name='theme-color', content='#061626')
 		meta(name='msapplication-navbutton-color', content='#061626')
@@ -43,17 +43,13 @@ html(lang="ru")
 		link(rel="stylesheet" href="styles/main.css")
 
 	body(class=name)
-		.grid
-			header.header
-				include  ../../blocks/modules/header/header.pug
-			main.content
-				block content
-			.sidebar
-				h2 This is my sidebar
-			footer.footer
-				include  ../../blocks/modules/footer/footer.pug
+		header.header
+			include  ../../blocks/modules/header/header.pug
+		main.content
+			block content
+		footer.footer
+			include  ../../blocks/modules/footer/footer.pug
 		include ../../blocks/components/modal/modal.pug
 		include ../../blocks/components/modal/modal-success.pug
 		include ../../blocks/components/modal/modal-error.pug
-		include ../../blocks/components/overlay/overlay.pug
 		block scripts

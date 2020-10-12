@@ -23,36 +23,14 @@ body {
   color: var(--black);
   overflow-wrap: normal;
   overflow-x: hidden;
-
-  &.modal-open,
-  &.menu-open {
-    overflow: hidden;
-
-    @media screen and (max-width: 768px) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  }
+  -webkit-tap-highlight-color: transparent;
 }
 
-// заглушка при ленивой загрузки
-img.lazy {
-  // background-image: url(data:image/gif;base64,R0lGODlhCgAKAPAAAPf3+AAAACH5BAAAAAAALAAAAAAKAAoAAAIIhI+py+0PYysAOw==);
-  background-color: $grey;
-}
-
-img.lazy-applied,
-img.lazy-loaded,
-img.lazy-error {
-  opacity: 1;
-}
-
-// polyfill для EI 11
-.img--poly {
-  font-family: "object-fit: cover";
+.scroll-lock {
+  position: fixed;
+  right: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 // Размер svg
@@ -121,10 +99,6 @@ h2 {
 .img-wrapp,
 .custom-select-wrapper {
   max-width: 300px;
-}
-
-p {
-  color: (--black);
 }
 
 // @media (min-height: 400px) {

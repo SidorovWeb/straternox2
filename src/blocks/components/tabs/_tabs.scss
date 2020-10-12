@@ -9,12 +9,23 @@
     color: var(--black);
     background: none;
     cursor: pointer;
-    transition: $transition;
+    transition-property: color, background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
 
     &.selected {
       color: var(--black);
       background: $grey;
     }
+
+    // &:hover {
+    // }
+    &:focus {
+      outline: 2px solid red;
+      outline-offset: 1px;
+    }
+    // &:active {
+    // }
   }
 
   &__content {
@@ -26,7 +37,7 @@
     &.selected {
       display: block;
       opacity: 1;
-      animation: fadeIn 300ms;
+      animation: fadeIn 225ms;
     }
   }
 }

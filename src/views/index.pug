@@ -11,36 +11,42 @@ block content
 	.container
 		h1.h1-test Адаптивный текст
 		h2 Switch mode
-		button.btn.btn--normal.switch-mode Switch
+		button.btn.btn--default.btn--normal.switch-mode(type="button") Switch
 		h2 Button
 		.btn-container
-			button.btn.btn--normal Normal
-			button.btn.btn--medium Medium
-			button.btn.btn--large Large
-			a(href="#").btn Link
-			button.btn.btn--normal.btn--with-icon
+			button.btn.btn--default.btn--normal.btn--radius(type="button") Normal
+			button.btn.btn--default.btn--normal.btn--radius.btn--scale(type="button") scale
+			button.btn.btn--default.btn--medium.btn--radius(type="button") Medium
+			button.btn.btn--default.btn--large.btn--radius(type="button") Large
+			a(href="#" type="button").btn.btn--default.btn--radius Link
+			button.btn.btn--default.btn--normal.btn--with-icon.btn--radius(type="button")
 				+icon('vk')
 				span VKontakte
-			button.btn.btn--normal.btn--icon
+			button.btn.btn--default.btn--normal.btn--icon.btn--radius(type="button")
 				+icon('vk')
-				span VKontakte
-			button.btn.btn--normal.btn--two-lines
+				span.sr-only VKontakte
+			button.btn.btn--default.btn--normal.btn--two-lines.btn--radius(type="button")
 				span Subscribe to our newsletter
 				span(aria-hidden="true") 240K+ subscribers
-			button.btn.btn--normal.btn--primary Normal
-			button.btn.btn--normal.btn--secondary Normal
-			button.btn.btn--normal.btn--warning Normal
-			button.btn.btn--normal.btn--danger Normal
-			button.btn.btn--normal(disabled) Button
-		h2 modal
-		button.btn.btn--normal.btn-modal modal
+			button.btn.btn--normal.btn--primary.btn--radius(type="button") Normal
+			button.btn.btn--normal.btn--secondary.btn--radius(type="button") Normal
+			button.btn.btn--normal.btn--warning.btn--radius(type="button") Normal
+			button.btn.btn--normal.btn--danger.btn--radius(type="button") Normal
+			button.btn.btn--normal.btn--radius(type="button" disabled) Button
+		h2 Modal
+		button.btn.btn--default.btn--normal.btn--radius.modal__trigger(type="button" data-trigger='modal') modal
+		button.btn.btn--default.btn--normal.btn--radius.modal__trigger(type="button" data-trigger='success') modal success
+		h2 Form
+		include ../blocks/components/form/form.pug
 		h2 Select
 		include ../blocks/components/select/select.pug
-		h2 tabs
+		h2 Tabs
 		include ../blocks/components/tabs/tabs.pug
-		h2 checkbox
-		input(type="checkbox")
-		h2 Колонки
+		h2 Accordion
+		include ../blocks/components/accordion/accordion.pug
+		h2 Checkbox
+		include ../blocks/components/checkbox/checkbox.pug
+		h2 Grid
 		.row
 			.coll-3
 				.inner
@@ -54,16 +60,19 @@ block content
 			.coll-3
 				.inner
 					p column
-		h2 image
+		h2 Image
 		.img-wrapp
-			+jpg(true,'img/1','1200','750','Горы','data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACH5BAEAAAEALAAAAAAIAAUAAAIFjI+py1gAOw==')
+			+jpg(true,'img/1','300','187','Горы')
+		h2 Image background
+		.img-wrapp
+			+img-background('img/1')
 		h2 Slider
 		include ../blocks/components/slider/slider.pug
 		h2 Table
 		include ../blocks/components/table/table.pug
-		h2 breadcrumbs
+		h2 Breadcrumbs
 		+breadcrumbs(['Main page', 'News'], 'News detail')
-		h2 hamburger
+		h2 Menu
 		include ../blocks/components/hamburger/hamburger.pug
 		h2 Nav
 		+nav(['Main page', 'News', 'News detail', 'page', 'page2', 'page3'])

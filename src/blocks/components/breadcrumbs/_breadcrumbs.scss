@@ -44,10 +44,15 @@ $right: 60px;
       font-size: 16px;
       line-height: 24px;
       color: inherit;
-      transition: $transition;
+      transition: color 0.3s ease-in-out;
 
       &:hover {
         color: $grey;
+      }
+
+      &:focus {
+        outline: 2px solid red;
+        outline-offset: 1px;
       }
 
       &:active {

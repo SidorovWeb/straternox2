@@ -1,18 +1,6 @@
 const path = require('path')
-const webpack = require('webpack')
 
 module.exports = {
-    plugins: [
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            jquery: 'jquery',
-            'window.jquery': 'jquery',
-            $: 'jquery',
-            'window.$': 'jquery',
-        }),
-    ],
-
     entry: {
         main: './src/js/index.js',
     },
@@ -49,7 +37,7 @@ module.exports = {
                                 '@babel/preset-env',
                                 {
                                     debug: true,
-                                    corejs: 3,
+                                    corejs: '3.6.4',
                                     useBuiltIns: 'usage',
                                 },
                             ],

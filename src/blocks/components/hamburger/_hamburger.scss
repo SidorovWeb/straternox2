@@ -1,20 +1,21 @@
 .hamburger {
   position: relative;
   display: none;
-  z-index: 100;
   width: 28px;
   height: 23px;
   cursor: pointer;
-  transition: $transition;
-  transform: translateY(0);
 
   @include medium {
     display: flex;
     margin-right: auto;
   }
 
+  &:focus {
+    outline: 2px solid red;
+    outline-offset: 1px;
+  }
+
   &:active {
-    transform: translateY(1px);
     .hamburger__span {
       background-color: $grey;
     }
@@ -27,8 +28,10 @@
     margin-top: 10px;
     background-color: $black;
     transform: translateX(0) translateY(0) rotate(0);
-    transition: $transition;
     opacity: 1;
+    transition-property: transform, opacity, background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
 
     &:nth-child(1) {
       top: -8px;
@@ -37,6 +40,7 @@
     }
 
     &:nth-child(2) {
+      top: 0px;
       width: 28px;
       background-color: $black;
     }
@@ -57,28 +61,27 @@
         }
 
         &:nth-child(2) {
-          background-color: transparent;
+          opacity: 0;
         }
       }
     }
 
     & .hamburger__span {
       background-color: transparent;
-      transition: $transition;
 
       &:nth-child(1),
       &:nth-child(3) {
-        background-color: $white;
+        background-color: $black;
       }
 
       &:nth-child(1) {
         width: 100%;
-        transform: translateX(0) translateY(10px) rotate(45deg) !important;
+        transform: translateX(0) translateY(8.5px) rotate(45deg) !important;
       }
 
       &:nth-child(3) {
         width: 100%;
-        transform: translateX(0) translateY(-6px) rotate(-45deg) !important;
+        transform: translateX(0) translateY(-7.5px) rotate(-45deg) !important;
       }
     }
   }

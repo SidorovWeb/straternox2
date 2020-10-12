@@ -1,156 +1,187 @@
-const modal = () => {
-  function bindModal(triggerSelector, modalSelector, closeSelector) {
-    const trigger = document.querySelectorAll(triggerSelector),
-      modal = document.querySelector(modalSelector),
-      close = document.querySelectorAll(closeSelector),
-      windows = document.querySelectorAll('[data-modal]'),
-      overlay = document.querySelector('.overlay'),
-      forms = modal.querySelectorAll('form'),
-      scroll = calc_scroll(),
-      modalSuccess = document.querySelector('[data-modal-success]'),
-      modalError = document.querySelector('[data-modal-error]'),
-      windowClosingTime = 200
-    // header = document.querySelectorAll('.header')
+import { focusElements, getScroll, scrolLock, bodyScrollControl } from "../../../js/modules/utils"
 
-    trigger.forEach((t) => {
-      t.addEventListener('click', (e) => {
+export default class Modal {
+  constructor(options) {
+    this.triggers = document.querySelectorAll(options.trigger),
+    this.modal = document.querySelector(options.modal),
+    this.closeBnts = document.querySelectorAll(options.close),
+    this.modalClassName = options.modal
 
-        if (e.target) {
-          e.preventDefault()
-        }
+    this.init()
+  }
 
-        windows.forEach((item) => {
-          item.classList.remove('modal-open','modal-close')
-          overlay.classList.remove('open')
-        })
+  init() {
+    if (!this.modal) {
+      return
+    }
 
-        document.body.classList.add('modal-open')
-        modal.classList.add('modal-open')
-        overlay.classList.add('open')
+    this.setup()
+    this.listeners()
+  }
 
-        if (get_scroll('Height')) {
-          document.body.style.marginRight = `${scroll}px`
-        }
-        // Если header fixed
-        // header.forEach((item) => {
-        //   item.style.paddingRight = `${scroll}px`
-        // })
-      })
-    })
+  setup() {
+    this.isOpened = false
+    this.isAnimated = false
+    this.nextWindows = false
+    this.firstTrigger = null
+    this.currentModal = null
+    this.overlay = document.querySelector('.overlay')
+    this.focusElements = focusElements()
 
-    close.forEach((c) => {
-      c.addEventListener('click', () => {
-        modal.classList.add('modal-close')
-
-        setTimeout(() => {
-          overlay.classList.remove('open')
-          modal.classList.remove('modal-close','modal-open')
-          bodyClear()
-
-          if (forms) {
-            clearForm(forms)
-          }
-        }, windowClosingTime);
-      })
-    })
-
-    modal.addEventListener('click', (e) => {
-      if (e.target == modal) {
-        modal.classList.add('modal-close')
-
-        setTimeout(() => {
-          overlay.classList.remove('open')
-          modal.classList.remove('modal-close','modal-open')
-          bodyClear()
-
-          if (forms) {
-            clearForm(forms)
-          }
-        }, windowClosingTime);
-        // headerRemoveStyle(header)
-      }
-    })
-    if (forms) {
-      forms.forEach((f) => {
-        f.addEventListener('submit', (e) => {
-          e.preventDefault()
-        modal.classList.add('modal-close')
-
-        setTimeout(() => {
-          modal.classList.remove('modal-open')
-          try {
-            windowInfo(f,modalSuccess, modal,overlay,windowClosingTime)
-          } catch (error) {
-            windowInfo(f,modalError, modal,overlay,windowClosingTime)
-          }
-        }, 200);
-        })
-      })
+    if (!this.overlay) {
+      this.overlay = document.createElement('div')
+      this.overlay.classList.add('overlay')
+      document.body.appendChild(this.overlay)
+    } else {
+      this.overlay = document.querySelector('.overlay')
     }
   }
 
-  // Если header fixed
-  // function headerRemoveStyle(el) {
-  //   el.forEach((item) => {
-  //     item.style.paddingRight = ''
-  //   })
-  // }
+  listeners() {
 
-  function windowInfo(form,windowName, modal,overlay,time) {
-    windowName.classList.add('modal-open','is-success')
-
-    setTimeout(() => {
-      modal.classList.remove('is-passed')
-      windowName.classList.add('modal-close')
-
-      setTimeout(() => {
-        windowName.classList.remove('modal-open','is-success','modal-close')
-        modal.classList.remove('modal-close')
-        overlay.classList.remove('open')
-        document.body.classList.remove('modal-open')
-        document.body.style.marginRight = ''
-        form.reset()
-      }, time);
-      // headerRemoveStyle(header)
-    }, 2000)
-  }
-
-  function calc_scroll() {
-    let div = document.createElement('div')
-    div.style.width = '50px'
-    div.style.height = '50px'
-    div.style.overflowY = 'scroll'
-    div.style.visibility = 'hidden'
-    document.body.appendChild(div)
-
-    let scrollWidth = div.offsetWidth - div.clientWidth // сама прокрутка
-    div.remove()
-    return scrollWidth
-  }
-
-  // Проверка на скролл
-  function get_scroll(a) {
-    var d = document,
-      b = d.body,
-      e = d.documentElement,
-      c = 'client' + a
-    a = 'scroll' + a
-    return /CSS/.test(d.compatMode) ? e[c] < e[a] : b[c] < b[a]
-  }
-
-  function bodyClear() {
-
-    document.body.classList.remove('modal-open')
-    document.body.style.marginRight = ''
-  }
-
-  function clearForm(forms) {
-      forms.forEach((f) => {
-        f.reset()
+    if (this.triggers) {
+      this.triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => this.open(trigger))
       })
+    }
+
+    this.closeBnts.forEach(cBtn => {
+      cBtn.addEventListener('click', this.close.bind(this))
+    })
+
+    document.querySelectorAll(this.modalClassName).forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target.classList.contains(this.modalClassName.slice(1))) {
+          this.close()
+        }
+      })
+    })
+
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && this.isOpened && this.currentModal.classList.contains('modal-open')) {
+        e.preventDefault()
+        this.close()
+      }
+
+      if (e.key === 'Tab' && this.isOpened) {
+        this.focusCatcher(e)
+      }
+    })
   }
 
-  bindModal('.btn-modal', '.modal-wrapper', '.modal-wrapper .modal__close')
-}
+  open(trigger) {
+    this.isOpened = true
 
-export default modal
+    let modalName = this.triggers.length != 0
+    ? trigger.dataset.trigger
+    : this.modalClassName
+
+
+
+    if (this.isOpened && !this.nextWindows) {
+      this.firstTrigger =  trigger
+    }
+
+    if (document.documentElement.classList.contains('scroll-lock')) { // Если окно уже открыто
+      if (document.querySelector('.modal-open')) {
+        document.querySelector('.modal-open').classList.remove('modal-open')
+      }
+
+      this.nextWindows = true
+    }
+
+    this.currentModal = this.triggers.length != 0
+    ? document.querySelector(`#${modalName}`)
+    : document.querySelector(`${modalName}`)
+
+
+    if (this.isOpened && getScroll('Height')) {
+      bodyScrollControl()
+    }
+
+    this.currentModal.classList.add('modal-open')
+    this.overlay.classList.add('overlay--show')
+
+    if (!this.nextWindows) {
+      scrolLock()
+      this.nextWindows = true
+    }
+    this.focusContol()
+  }
+
+  close() {
+
+    if (!this.isOpened) {
+      return
+    }
+
+    this.isAnimated = true
+    this.nextWindows = false
+    this.overlay.classList.add('overlay--hide')
+
+    document.querySelectorAll(this.modalClassName).forEach(modal => {
+      modal.classList.add('modal-close')
+      modal.addEventListener('transitionend', this.transitionend.bind(this))
+    })
+
+  }
+
+  transitionend(e) {
+    this.currentModal.removeEventListener('transitionend', this.transitionend.bind(this))
+
+    if (this.isAnimated && e.target.classList.contains('modal__window') && e.propertyName == 'transform') {
+
+      document.querySelectorAll(this.modalClassName).forEach(modal => {
+        modal.classList.remove('modal-close')
+        modal.classList.remove('modal-open')
+      })
+
+      bodyScrollControl()
+      scrolLock()
+      this.focusContol()
+
+      this.overlay.classList.remove('overlay--show')
+      this.overlay.classList.remove('overlay--hide')
+      this.isOpened = false
+      this.isAnimated = false
+    }
+
+  }
+
+  focusContol() {
+    const nodes = this.currentModal.querySelectorAll(this.focusElements)
+
+    if (this.isOpened) {
+      if (nodes.length) {
+        setTimeout(() => {
+          nodes[0].focus()
+        }, 100)
+      }
+    }
+
+    if (this.firstTrigger) {
+      this.firstTrigger.focus()
+    }
+  }
+
+  focusCatcher(e) {
+    const nodes = this.currentModal.querySelectorAll(this.focusElements)
+    const nodesArray = Array.prototype.slice.call(nodes)
+
+    if (!this.currentModal.contains(document.activeElement)) {
+        nodesArray[0].focus()
+        e.preventDefault()
+    } else {
+        const focusedItemIndex = nodesArray.indexOf(document.activeElement)
+        if (e.shiftKey && focusedItemIndex === 0) {
+          setTimeout(() => {
+            nodesArray[nodesArray.length - 1].focus()
+          }, 0)
+        }
+        if (!e.shiftKey && focusedItemIndex === nodesArray.length - 1) {
+          nodesArray[0].focus()
+          e.preventDefault()
+        }
+    }
+  }
+}

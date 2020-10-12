@@ -10,37 +10,30 @@ $padding: 1em;
   margin: 0;
   border-radius: 0;
   text-decoration: none;
-  text-align: center;
   text-decoration: none;
   white-space: nowrap;
   overflow: visible;
   vertical-align: middle;
   font-family: inherit;
   line-height: 1;
-  transition-property: color, background-color, border-color;
-  transform: translateY(0);
-  transition: $transition;
-  outline: none;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transition-property: transform, color, background-color, border-color;
+  background-color: transparent;
+  background-origin: border-box;
+  color: inherit;
+  // outline: none;
   /* другие стили*/
   min-width: 100px;
   padding: 0.625em $padding;
-  border-radius: 0.3125em;
-  background-color: $grey;
-  color: #000;
-  background-origin: border-box;
 
   &:hover {
     text-decoration: none;
-    background-color: lighten($grey, 5%);
   }
 
   &:focus {
-    outline: none;
-  }
-
-  &:active {
-    transform: translateY(1px);
-    background-color: darken($grey, 5%);
+    outline: 2px solid red;
+    outline-offset: 1px;
   }
 
   &:not(:disabled) {
@@ -64,11 +57,8 @@ $padding: 1em;
   }
 
   &--icon {
-    min-width: initial;
+    min-width: auto;
     text-align: center;
-    & span {
-      @extend .sr-only;
-    }
 
     & svg {
       margin: 0;
@@ -93,6 +83,18 @@ $padding: 1em;
     font-size: 24px;
   }
 
+  &--default {
+    background-color: $grey;
+
+    &:hover {
+      background-color: lighten($grey, 5%);
+    }
+
+    &:active {
+      background-color: darken($grey, 5%);
+    }
+  }
+
   &--primary {
     background-color: $color-primary;
     &:hover {
@@ -103,6 +105,7 @@ $padding: 1em;
       background-color: darken($color-primary, 5%);
     }
   }
+
   &--secondary {
     background-color: $color-secondary;
     &:hover {
@@ -112,6 +115,7 @@ $padding: 1em;
       background-color: darken($color-secondary, 5%);
     }
   }
+
   &--danger {
     background-color: $color-danger;
     &:hover {
@@ -121,6 +125,7 @@ $padding: 1em;
       background-color: darken($color-danger, 5%);
     }
   }
+
   &--warning {
     background-color: $color-warning;
     &:hover {
@@ -128,6 +133,22 @@ $padding: 1em;
     }
     &:active {
       background-color: darken($color-warning, 5%);
+    }
+  }
+
+  &--radius {
+    border-radius: 0.3125em;
+  }
+
+  &--w100 {
+    min-width: 100%;
+  }
+
+  &--scale {
+    transform: scale(1);
+
+    &:active {
+      transform: scale(0.9);
     }
   }
 }

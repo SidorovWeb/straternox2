@@ -8,7 +8,7 @@ gulp.task('serve', () => {
   browsersync.init({
     server: './dist/',
     // port: 4000,
-    browser: 'safari',
+    browser: 'google chrome',
     notify: true,
   })
 

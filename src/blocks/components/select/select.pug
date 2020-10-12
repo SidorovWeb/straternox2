@@ -1,7 +1,18 @@
-.custom-select
-	.custom-select__trigger
+.select
+	.select__backdrop
+	button.btn.select__trigger(type="button")
+		span.select__trigger-text Выберите
 		.arrow
-	.custom-select__options
-		span.custom-select__option.selected(data-value='android') Android
-		span.custom-select__option(data-value='windows') Windows
-		span.custom-select__option(data-value='linux') Linux
+	ul.select__options
+		li.select__item
+			button(type='button').btn.select__option.selected Android
+		li.select__item
+			button(type='button').btn.select__option Windows
+		li.select__item
+			button(type='button').btn.select__option Linux
+		li.select__item
+			button(type='button').btn.select__option Mac
+		li.select__item
+			button(type='button').btn.select__option PC
+		li.select__item
+			button(type='button').btn.select__option Phone

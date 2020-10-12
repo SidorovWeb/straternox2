@@ -37,9 +37,11 @@ const switcherThemes = () => {
             window.toggleTheme();
 
             document.documentElement.classList.add("theme-transition");
+            document.documentElement.classList.add("js-focus-visible"); // fix, если не добавить класс слетает
 
             window.setTimeout(function () {
                 document.documentElement.classList.remove("theme-transition");
+                document.documentElement.classList.add("js-focus-visible"); // fix, если не добавить класс слетает
             }, 150);
 
             if (isIE11) {

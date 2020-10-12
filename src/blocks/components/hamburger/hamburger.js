@@ -1,48 +1,18 @@
-const hamburger = () => {
-  const hamburger = document.querySelector('.hamburger')
-  const nav = document.querySelector('.nav')
-  const overlay = document.querySelector('.overlay')
+import { closestItemByClass } from '../../../js/modules/utils';
 
-  hamburger.addEventListener('click', function (e) {
-    e.preventDefault()
-    this.classList.remove('hide')
-
-    if (!nav.classList.contains('menu-open')) {
-      document.body.classList.add('menu-open')
-      this.classList.add('hamburger--open')
-      overlay.classList.add('open')
-      nav.classList.add('menu-open')
-    } else {
-      nav.classList.add('hide')
-
-      setTimeout(() => {
-        closeMobileMenu(nav, this, overlay)
-      }, 200);
-    }
-  })
-
-  nav.addEventListener('click', function (e) {
-    if (e.target == nav) {
-       this.classList.add('hide')
-
-      setTimeout(() => {
-        closeMobileMenu(this, hamburger, overlay)
-      }, 200);
-    }
-  })
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 992) {
-      closeMobileMenu(nav, hamburger, overlay)
-    }
-  })
+function switcher (e) {
+  if (closestItemByClass(e.target, 'hamburger')) {
+    const hamburgers = document.querySelectorAll('.hamburger')
+    hamburgers.forEach(el => {
+      el.classList.contains('hamburger--open')
+      ? el.classList.remove('hamburger--open')
+      : el.classList.add('hamburger--open')
+    })
+  }
 }
 
-function closeMobileMenu(nav, hamburger,overlay) {
-  nav.classList.remove('menu-open', 'hide')
-  hamburger.classList.remove('hamburger--open')
-  overlay.classList.remove('open')
-  document.body.classList.remove('menu-open')
+const hamburger = () => {
+  document.addEventListener('click', switcher)
 }
 
 export default hamburger

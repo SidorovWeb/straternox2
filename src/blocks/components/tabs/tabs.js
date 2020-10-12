@@ -1,26 +1,41 @@
-const tabs = () => {
-  const tabs = document.querySelectorAll('.tabs__tab')
+export default class Tabs {
+  constructor(options) {
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', (e) => {
-      e.preventDefault()
+    if (typeof options.element === 'string') {
+      this.el = document.querySelector(options.element)
+    }
+    if (typeof options.element === 'object') {
+      this.el = options.element
+    }
 
-      const value = tab.dataset.tab
+    this.setup()
+  }
 
-      if (!tab.classList.contains('selected')) {
-        const currentTab = tab.closest('.tabs').querySelector(`[data-tab=${value}]`)
-        const currentContent = tab.closest('.tabs').querySelector(`[data-tab-content=${value}]`)
+  setup() {
+    this.tabs = this.el.querySelectorAll('[data-tab]')
 
-        const selectedItems = currentTab.closest('.tabs').querySelectorAll('.selected')
-        selectedItems.forEach((item) => {
-          item.classList.remove('selected')
-        })
+    this.listeners()
+  }
 
-        currentTab.classList.add('selected')
-        currentContent.classList.add('selected')
-      }
+  listeners() {
+    this.tabs.forEach(el => {
+      el.addEventListener('click', (event) => { this.show(event,el) })
     })
-  })
-}
+  }
 
-export default tabs
+  show(event,el) {
+    event.preventDefault()
+
+    if(!el.classList.contains('selected')) {
+      const valueTab = el.dataset.tab
+      const currentContent = el.closest('.tabs').querySelector(`[data-tab-content=${valueTab}]`)
+
+      this.el.querySelectorAll('.selected').forEach(s => {
+        s.classList.remove('selected')
+      })
+
+      el.classList.add('selected')
+      currentContent.classList.add('selected')
+    }
+  }
+}
