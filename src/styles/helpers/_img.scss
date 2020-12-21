@@ -1,19 +1,7 @@
-img.lazy-applied,
-img.lazy-loaded,
-img.lazy-error {
-  opacity: 1;
-}
-
-// polyfill для EI 11
-
-.img--poly {
-  font-family: "object-fit: cover";
-}
-
 .img-background {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 200px;
+  height: 20rem;
   width: 100%;
 }

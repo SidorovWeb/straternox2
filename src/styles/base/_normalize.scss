@@ -90,10 +90,12 @@ sup {
 
 img {
   display: block;
-  width: 100%;
   max-width: 100%;
+  width: 100%;
+  height: auto;
+  border: 0;
   object-fit: cover;
-  border-style: none;
+  object-position: center center;
 }
 
 button,

@@ -38,6 +38,7 @@
         "eslint": "~7.0.0",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "~7.0.1",
+        "gulp-cheerio": "^1.0.0",
         "gulp-clean-css": "~4.3.0",
         "gulp-debug": "~4.0.0",
         "gulp-group-css-media-queries": "^1.2.2",
@@ -49,7 +50,8 @@
         "gulp-replace": "^1.0.0",
         "gulp-sass": "~4.1.0",
         "gulp-sourcemaps": "^2.6.5",
-        "gulp-svg-sprite": "^1.5.0",
+        "gulp-svgmin": "^3.0.0",
+        "gulp-tap": "^2.0.0",
         "gulp-watch": "^5.0.1",
         "gulp-webp": "^4.0.1",
         "husky": "^4.2.5",
@@ -72,10 +74,9 @@
         "css-vars-ponyfill": "^2.3.1",
         "focus-visible": "^5.1.0",
         "imask": "^6.0.5",
-        "object-fit-images": "^3.2.4",
+        "supports-webp": "^2.0.1",
         "svg4everybody": "^2.1.9",
-        "swiper": "^6.0.4",
-        "vanilla-lazyload": "^16.0.0"
+        "swiper": "^6.0.4"
     },
     "husky": {
         "hooks": {

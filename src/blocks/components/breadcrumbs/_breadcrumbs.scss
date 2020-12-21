@@ -1,10 +1,10 @@
-$right: 60px;
+$right: 6rem;
 
 .section-breadcrumbs {
-  padding-top: 40px;
+  padding-top: 4rem;
 
   @media screen and (max-width: 768px) {
-    padding-top: 40px;
+    padding-top: 4rem;
   }
 }
 
@@ -24,15 +24,15 @@ $right: 60px;
       &:before {
         position: absolute;
         content: "";
-        height: 1px;
-        width: 12px;
-        right: -$right/2 - 6px;
+        height: .1rem;
+        width: 1.2rem;
+        right: -$right/2 - .6rem;
         background-color: $grey;
         top: 50%;
         transform: translateY(-50%);
 
         @media screen and (max-width: 768px) {
-          right: -$right/4 - 6px;
+          right: -$right/4 - .6rem;
         }
       }
     }
@@ -41,8 +41,7 @@ $right: 60px;
   li {
     color: $black;
     a {
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 1.6rem;
       color: inherit;
       transition: color 0.3s ease-in-out;
 

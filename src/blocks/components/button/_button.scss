@@ -24,7 +24,7 @@ $padding: 1em;
   color: inherit;
   // outline: none;
   /* другие стили*/
-  min-width: 100px;
+  min-width: 10rem;
   padding: 0.625em $padding;
 
   &:hover {
@@ -46,12 +46,12 @@ $padding: 1em;
     cursor: not-allowed;
   }
 
-  & svg {
+  &--icon-svg {
     display: inline-block;
     vertical-align: middle;
     fill: #6c7589;
-    width: 20px;
-    height: 20px;
+    width: 2.4rem;
+    height: 2.1rem;
     margin-left: -$padding/4;
     margin-right: $padding/2;
   }
@@ -60,7 +60,7 @@ $padding: 1em;
     min-width: auto;
     text-align: center;
 
-    & svg {
+    & svg, & .svg {
       margin: 0;
     }
   }
@@ -69,18 +69,18 @@ $padding: 1em;
     flex-direction: column;
     align-items: center;
     & > *:not(:last-child) {
-      margin-bottom: 5px;
+      margin-bottom: .5rem;
     }
   }
 
   &--normal {
-    font-size: inherit;
+    font-size: 1.6rem;
   }
   &--medium {
-    font-size: 20px;
+    font-size: 2rem;
   }
   &--large {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   &--default {

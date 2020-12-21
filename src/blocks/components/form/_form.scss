@@ -1,45 +1,44 @@
 .form-wrapper {
-  max-width: 400px;
+  max-width: 40rem;
 }
 .form {
   &__line {
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: .8rem;
   }
 
   &__input {
-    height: 56px;
+    height: 5.6rem;
   }
 
   &__input,
   &__textarea {
     background-color: transparent;
-    border-radius: 4px;
-    border: 1px solid #ebecef;
+    border-radius: .4rem;
+    border: .1rem solid #ebecef;
     width: 100%;
 
-    padding: 16px;
-    transition: $transition;
+    padding: 1.6rem;
+    transition: border 225ms ease-in-out;
     color: $dark;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.6rem;
 
     &:hover {
-      border: 1px solid #dddfe3;
+      border: .1rem solid #dddfe3;
     }
 
     &:focus {
-      border: 1px solid #3fc7f3;
+      border: .1rem solid #3fc7f3;
     }
   }
 
   &__textarea {
     resize: none;
-    height: 102px;
+    height: 10.2rem;
   }
 
   &__block-btn {
-    padding-top: 32px;
+    padding-top: 3.2rem;
   }
 }
 
@@ -53,9 +52,9 @@
   color: #b54300;
   opacity: 1;
   position: absolute;
-  bottom: -1px;
-  right: 20px;
-  font-size: 10px;
+  bottom: -.1rem;
+  right: 2rem;
+  font-size: 1rem;
   animation-name: show;
   animation-duration: 225ms;
   animation-timing-function: ease-in-out;

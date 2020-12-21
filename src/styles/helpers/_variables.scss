@@ -10,8 +10,12 @@ html.theme-dark {
   --black: #ffffff;
 }
 
-// grid
-$container-width: 1220px;
+// SIZE
+// $font-size: 16px;
+$max-width-breakpoint: 1921;
+$maxb: 1921px;
+$container-width:  1920px;
+
 
 // color
 $color-primary: #0060df;
@@ -23,7 +27,7 @@ $main-bg: #ffffff;
 $black: #000000;
 $white: #ffffff;
 $dark: #2a333d;
-$blue: #007bff;
+$blue: #0258b3;
 $grey: #e3e3e3;
 $color-bg: red;
 $color-bar: #ccc;

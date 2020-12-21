@@ -5,27 +5,25 @@
 
 .swiper-slide {
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: $black;
   background-color: $grey;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  width: auto;
+  width: 4rem;
   background-color: $color-accent;
   z-index: 10;
+  transform: translateY(-50%);
 
   &::before,
   &::after {
     content: none;
   }
 
-  svg {
+  svg, .svg {
     stroke: #32353d;
-    width: 8px;
-    height: 12px;
+    width: .8rem;
+    height: 1.2rem;
   }
 }

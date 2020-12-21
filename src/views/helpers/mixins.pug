@@ -1,39 +1,16 @@
-mixin icon(name,mod)
-	if(mod)
-		svg(class="svg-sprite-icon icon-" + name + ' ' + mod)
-			use(xlink:href="img/sprites/sprite.svg#" + name)
+mixin svg(name, w, h, className)
+	svg(class=className, data-svg-name=name, width=w, height=h)
+
+
+mixin image(img,width,height,alt,png)
+	if png
+		picture
+			source(srcset=`${img}.webp`, type='image/webp')
+			img( src=`${img}.png`,width=width, height=height, alt=alt, loading="lazy" )
 	else
-		svg(class="svg-sprite-icon icon-" + name)
-			use(xlink:href="img/sprites/sprite.svg#" + name)
-
-
-//- Lazy Load Placeholder Generator https://webdesign-master.ru/services/lazy/
-
-mixin jpg(boolean,img,width,height,alt,additionalClassName, classNameSwiperLazy)
-	- const placeholder = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8eHBHPQAHQAK78tm8NwAAAABJRU5ErkJggg=="
-
-	if boolean
 		picture
-			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-			img.lazy.img--poly.placeholder( class=additionalClassName alt=alt, src=placeholder, data-src=`${img}.jpg`,width=width, height=height decoding='asynk' )
-	if classNameSwiperLazy
-		picture
-			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-			img.lazy.img--poly.placeholder( class=additionalClassName, data-slider-class=true, alt=alt, src=placeholder ,data-src=`${img}.jpg`,width=width, height=height decoding='asynk' )
+			source(srcset=`${img}.webp`, type='image/webp')
+			img( src=`${img}.jpg`,width=width, height=height, alt=alt, loading="lazy" )
 
-mixin png(boolean,img,width,height,alt,additionalClassName, classNameSwiperLazy)
-	- const placeholder = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8eHBHPQAHQAK78tm8NwAAAABJRU5ErkJggg=="
-
-	if boolean
-		picture
-			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-			img.lazy.img--poly( class=additionalClassName alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height decoding='asynk' )
-	if classNameSwiperLazy
-		picture
-			source(srcset=placeholder ,data-srcset=`${img}.webp`, type='image/webp')
-			img.img--poly( class=additionalClassName, data-slider-class=true, alt=alt, src=placeholder, data-src=`${img}.png`,width=width, height=height decoding='asynk' )
-
-mixin img-background(img)
-	- const placeholder = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8eHBHPQAHQAK78tm8NwAAAABJRU5ErkJggg=="
-
-	.img-background.lazy(style=`background-image: url(${placeholder});` data-bg=`${img}.webp` data-bg-replace-webp=`${img}.jpg`)
+	//- lazyBg
+	//- data-bg=`${img}.png` data-bg-replace-webp=`${img}.webp`

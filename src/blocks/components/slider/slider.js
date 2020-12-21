@@ -5,17 +5,16 @@ Swiper.use([Navigation, Lazy])
 const swiperSlider = () => {
   new Swiper('.swiper-container', {
     loop: true,
-    lazy: {
-      loadPrevNext: false,
-      loadOnTransitionStart: true,
-    },
+    // lazy: {
+    //   loadPrevNext: false,
+    //   loadOnTransitionStart: true,
+    // },
     preloadImages: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
       clickable: true,
     },
-    grabCursor: true
   })
 }
 

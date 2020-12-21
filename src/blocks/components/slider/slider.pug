@@ -1,14 +1,18 @@
 .swiper-container
 	.swiper-wrapper
 		.swiper-slide
-			+jpg(false,'img/2','700','440','Горы', false, true)
+			.slide-content
+				+image('img/1','1180','472','Горы')
 		.swiper-slide
-			+jpg(false,'img/3','700','440','Горы', false, true)
+			.slide-content
+				+image('img/1','1180','472','Горы')
 		.swiper-slide
-			+jpg(false,'img/4','700','440','Горы', false, true)
+			.slide-content
+				+image('img/1','1180','472','Горы')
 		.swiper-slide
-			+jpg(false,'img/5','700','440','Горы', false, true)
+			.slide-content
+				+image('img/1','1180','472','Горы')
 	button.btn.btn--icon.swiper-button-prev(aria-label="Предыдущий слайд" type="button")
-		+icon('arrow-left')
+		+svg('arrow-left', '8', '12', 'slider-arrow')
 	button.btn.btn--icon.swiper-button-next(aria-label="Следующий слайд" type="button")
-		+icon('arrow-right')
+		+svg('arrow-right', '8', '12', 'slider-arrow')

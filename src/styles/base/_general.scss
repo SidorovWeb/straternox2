@@ -1,5 +1,9 @@
 html {
   font-size: 10px;
+
+  // @media (min-width: 1921px) {
+  //   font-size: get-vw(10px);
+  // }
 }
 
 html.theme-transition,
@@ -43,13 +47,21 @@ body {
 // норм эффект
 .hover {
   transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.04);
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-.4rem);
     transition-delay: 0s !important;
-    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.09);
   }
+}
+
+.position-absolute {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 // скрыть визуально, убрав с экрана, но оставив доступным для средств чтения с экрана.
@@ -82,41 +94,78 @@ body {
   margin-right: -50vw;
 }
 
+.svg {
+  display: inline-block;
+}
+
 //  Удалить это тест
 h1 {
   @include fluidFontSize(25px, 47px, 768px, 1920px);
   color: var(--black);
+  @media (min-width: $maxb) {
+    font-size: get-vw(47px);
+  }
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 1.6rem;
   color: $blue;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   background-color: $grey;
 }
 
-.img-wrapp,
 .custom-select-wrapper {
-  max-width: 300px;
-}
-
-// @media (min-height: 400px) {
-//     .section {
-//         height: 100vh;
-//     }
-// }
-
-.inner {
-  background-color: red;
+  max-width: 30rem;
 }
 
 .btn-container {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: wrap;
   & > * {
-    margin-right: 10px !important;
-    margin-bottom: 10px !important;
+    margin-right: 1rem !important;
+    margin-bottom: 1rem !important;
   }
+}
+
+
+.coll-md {
+  margin-bottom: 2rem;
+  @include medium {
+
+    @include coll();
+    flex: 0 1 50%;
+    max-width: 50%;
+  }
+
+  @include small {
+    @include coll();
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}
+
+.social-icon {
+  width: 2.4rem;
+  height: 2.1rem;
+  display: inline-block;
+}
+
+.svg-test {
+  width: 7rem;
+  height: 8rem;
+}
+.svg-test3 {
+  width: 2.4rem;
+  height: 2.1rem;
+  fill: red;
+}
+.svg-test2 {
+  width: 23.8rem;
+  height: 6.6rem;
+}
+
+.bg-img {
+  padding-top: 160px / 240px * 100%;
 }

@@ -1,10 +1,10 @@
 import './import/polyfill'
-import './import/svg4everybody'
-import './import/lazyLoad'
-import './import/objectFitImages'
-import './import/dragstart'
+// import './import/svg4everybody'
+import './modules/svgLoad'
+import './modules/replaceImage'
+import './modules/dragstart'
 import 'focus-visible'
-import viewportOnMobile from './modules/viewportOnMobile'
+import '../blocks/components/video/video'
 import switcherThemes from './modules/switcherThemes'
 import Modal from '../blocks/components/modal/modal'
 import Select from '../blocks/components/select/select'
@@ -15,15 +15,15 @@ import hamburger from '../blocks/components/hamburger/hamburger'
 import Menu from '../blocks/components/menu/menu';
 import Form from '../blocks/components/form/form';
 import imask from './modules/imask';
+// import viewportOnMobile from './modules/viewportOnMobile'
 // import smoothScroll from './modules/scroll-anchors'
 
 
-
-
 window.addEventListener('DOMContentLoaded', () => {
+
   switcherThemes()
 
-  viewportOnMobile()
+  // viewportOnMobile()
 
   new Modal({
     trigger: '.modal__trigger',
@@ -64,18 +64,18 @@ window.addEventListener('DOMContentLoaded', () => {
       isValidClass: false,
       settings: {
         text: {
-          required: 'Это поле обязательно'
+          required: 'Введите ваше имя!'
         },
         email: {
-          required: 'Это поле обязательно',
-          error: 'Адрес электронной почты должен быть в формате name@domain.com'
+          required: 'Введите ваш email!',
+          error: 'Email имеет неверный формат!'
         },
         phone: {
-          required: 'Это поле обязательно',
-          error: 'Введите полный номер'
+          required: 'Введите номер телефона!',
+          error: 'Телефон имеет неверный формат!'
         },
         checkbox: {
-          required: 'Это поле обязательно'
+          required: 'Согласии на обработку персональных данных!'
         }
       },
       submitHandler:(form, event) => {

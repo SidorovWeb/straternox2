@@ -5,7 +5,7 @@
 
   &__tab {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     color: var(--black);
     background: none;
     cursor: pointer;
@@ -30,7 +30,7 @@
 
   &__content {
     display: none;
-    padding: 15px;
+    padding: 1.5rem;
     color: var(--black);
     background: $grey;
 

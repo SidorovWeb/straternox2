@@ -1,8 +1,8 @@
 .accordion {
-  max-width: 400px;
+  max-width: 40rem;
 
   &__title {
-    padding: 20px;
+    padding: 2rem;
     width: 100%;
     background-color: $color-bar;
     cursor: pointer;
@@ -16,7 +16,7 @@
 
   &__collapse {
     height: 0;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     border: 1px solid $color-bar;
     border-top: 0;
     overflow: hidden;

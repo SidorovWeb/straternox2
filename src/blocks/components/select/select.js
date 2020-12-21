@@ -7,7 +7,7 @@ export default class Select {
       this.el = options.element
     }
 
-    this.placeholder  = document.querySelector(options.placeholder)
+    this.placeholder = document.querySelector(options.placeholder)
     this.hiddenInput = options.hiddenInput
 
     this.setup()
@@ -43,7 +43,7 @@ export default class Select {
       }
     })
 
-    this.item.forEach(el => {
+    this.item.forEach((el) => {
       el.addEventListener('click', () => {
         this.select(el)
         this.close()
@@ -55,14 +55,20 @@ export default class Select {
       })
     })
 
-    this.backdrop.addEventListener('click', () => { this.close() })
+    this.backdrop.addEventListener('click', () => {
+      this.close()
+    })
 
-    window.addEventListener('keyup', e => {
-      if(e.key === 'Escape' && this.el.classList.contains('select-open')) {
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'Escape' && this.el.classList.contains('select-open')) {
         this.close()
       }
 
-      if (e.key === 'Tab' && this.el.classList.contains('select-open') && e.target.classList.contains('forNavigationWithKeyboard')) {
+      if (
+        e.key === 'Tab' &&
+        this.el.classList.contains('select-open') &&
+        e.target.classList.contains('forNavigationWithKeyboard')
+      ) {
         this.trigger.focus()
       }
     })
@@ -81,24 +87,26 @@ export default class Select {
     this.button.remove()
 
     this.el.addEventListener('transitionend', this.transitionend.bind(this))
-
   }
 
   transitionend(e) {
     this.el.removeEventListener('transitionend', this.transitionend.bind(this))
     if (this.isAnimated) {
-      if (e.propertyName === 'opacity' && e.target.classList.contains('select__options')) {
+      if (
+        e.propertyName === 'opacity' &&
+        e.target.classList.contains('select__options')
+      ) {
         this.el.classList.remove('select-open')
         this.el.classList.remove('select-close')
         this.isAnimated = false
       }
-   }
+    }
   }
 
   select(el) {
     this.el.querySelector('.select__trigger-text').textContent = el.textContent
 
-    this.item.forEach(el => {
+    this.item.forEach((el) => {
       el.classList.remove('selected')
     })
 

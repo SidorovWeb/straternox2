@@ -59,10 +59,8 @@ export default class Form {
     })
 
     this.requiredInputs.forEach(input => {
-      input.addEventListener('blur', () => {
-        if (this.clickToSubmit) {
-          this.checkInputs()
-        }
+      input.addEventListener('input', () => {
+        this.setSuccessFor(input)
       })
     })
   }

@@ -79,3 +79,8 @@ export function bodyScrollControl() {
     html.style.marginRight = "";
   }
 }
+
+
+export function getAttr(elem, attr) {
+  return elem.getAttribute(attr)
+}

@@ -18,12 +18,12 @@ block content
 			button.btn.btn--default.btn--normal.btn--radius.btn--scale(type="button") scale
 			button.btn.btn--default.btn--medium.btn--radius(type="button") Medium
 			button.btn.btn--default.btn--large.btn--radius(type="button") Large
-			a(href="#" type="button").btn.btn--default.btn--radius Link
+			a(href="#").btn.btn--default.btn--radius Link
 			button.btn.btn--default.btn--normal.btn--with-icon.btn--radius(type="button")
-				+icon('vk')
+				+svg('vk', '8', '12', 'btn--icon-svg social-icon')
 				span VKontakte
 			button.btn.btn--default.btn--normal.btn--icon.btn--radius(type="button")
-				+icon('vk')
+				+svg('vk', '8', '12', 'btn--icon-svg social-icon')
 				span.sr-only VKontakte
 			button.btn.btn--default.btn--normal.btn--two-lines.btn--radius(type="button")
 				span Subscribe to our newsletter
@@ -48,24 +48,24 @@ block content
 		include ../blocks/components/checkbox/checkbox.pug
 		h2 Grid
 		.row
-			.coll-3
+			.coll-3.coll-md
 				.inner
-					p column
-			.coll-3
+					+image('img/3','300','187','Горы')
+			.coll-3.coll-md
 				.inner
-					p column
-			.coll-3
+					+image('img/3','300','187','Горы')
+			.coll-3.coll-md
 				.inner
-					p column
-			.coll-3
+					+image('img/3','300','187','Горы')
+			.coll-3.coll-md
 				.inner
-					p column
+					+image('img/3','300','187','Горы')
 		h2 Image
-		.img-wrapp
-			+jpg(true,'img/1','300','187','Горы')
+		.qqq(style="width: 30rem;")
+				+image('img/4','300','300','Горы', '', 'png')
 		h2 Image background
-		.img-wrapp
-			+img-background('img/1')
+		.qqq(style="width: 24rem;")
+			.bg-img(data-bg=`img/5.jpg` data-bg-replace-webp=`img/5.webp`)
 		h2 Slider
 		include ../blocks/components/slider/slider.pug
 		h2 Table
@@ -76,6 +76,15 @@ block content
 		include ../blocks/components/hamburger/hamburger.pug
 		h2 Nav
 		+nav(['Main page', 'News', 'News detail', 'page', 'page2', 'page3'])
+		h2 Video youtube
+		.ddd(style="width: 50%;")
+			include ../blocks/components/video/video.pug
+		h2 SVG icon
+		+svg('telegram', '24', '21', 'svg-test3')
+		+svg('vk', '24', '21', 'svg-test3')
+		+svg('html', '70', '80', 'svg-test')
+		+svg('logo', '238', '66', 'svg-test2')
+
 block scripts
 	script(src="js/main.js")
 	script(src="js/vendor.js")

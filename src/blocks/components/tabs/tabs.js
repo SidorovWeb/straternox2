@@ -1,6 +1,5 @@
 export default class Tabs {
   constructor(options) {
-
     if (typeof options.element === 'string') {
       this.el = document.querySelector(options.element)
     }
@@ -18,19 +17,23 @@ export default class Tabs {
   }
 
   listeners() {
-    this.tabs.forEach(el => {
-      el.addEventListener('click', (event) => { this.show(event,el) })
+    this.tabs.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        this.show(event, el)
+      })
     })
   }
 
-  show(event,el) {
+  show(event, el) {
     event.preventDefault()
 
-    if(!el.classList.contains('selected')) {
+    if (!el.classList.contains('selected')) {
       const valueTab = el.dataset.tab
-      const currentContent = el.closest('.tabs').querySelector(`[data-tab-content=${valueTab}]`)
+      const currentContent = el
+        .closest('.tabs')
+        .querySelector(`[data-tab-content=${valueTab}]`)
 
-      this.el.querySelectorAll('.selected').forEach(s => {
+      this.el.querySelectorAll('.selected').forEach((s) => {
         s.classList.remove('selected')
       })
 

@@ -7,8 +7,8 @@
   box-sizing: border-box;
   word-wrap: break-word;
   // 20px
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 @mixin e-large {
@@ -121,13 +121,13 @@
 }
 
 // Max breakpoint
-$max-breakpoint: var(--container-width);
+$max-breakpoint: $max-width-breakpoint;
 
 $wide-screen: "(min-width: #{$max-breakpoint}px)";
 
 @function get-vw($target) {
-  $vw-context: ($max-breakpoint * 0.01) * 1px;
-  @return ($target / $vw-context) * 1vw;
+  $vw-context: $max-breakpoint * 0.01 * 1px;
+  @return $target / $vw-context * 1vw;
 }
 
 @mixin max-bp {
@@ -138,8 +138,8 @@ $wide-screen: "(min-width: #{$max-breakpoint}px)";
 
 // px to rem
 
-$browser-context: var(--font-size); // Default
+// $browser-context: $font-size; // Default
 
-@function rem($pixels, $context: $browser-context) {
-  @return #{$pixels/$context}rem;
-}
+// @function rem($pixels, $context: $browser-context) {
+//   @return #{$pixels/$context}rem;
+// }

@@ -23,7 +23,7 @@
   justify-content: flex-start;
   height: 100%;
   width: 100%;
-  padding: 20px;
+  padding: 2rem;
   opacity: 0;
   visibility: hidden;
   -webkit-overflow-scrolling: touch;
@@ -67,7 +67,6 @@
     flex-shrink: 0;
     flex-grow: 0;
     width: 100%;
-    min-height: 100%;
     margin: auto;
     display: flex;
     flex-flow: column nowrap;
@@ -77,10 +76,10 @@
 
   &__window {
     position: relative;
-    max-width: 380px;
+    max-width: 38rem;
     width: 100%;
-    padding: 40px;
-    border-radius: 24px;
+    padding: 4rem;
+    border-radius: 2.4rem;
     color: $black;
     background: $main-bg;
     opacity: 0;
@@ -91,28 +90,28 @@
     cursor: default;
 
     @include x-small-480 {
-      padding: 40px 20px 40px 20px;
+      padding: 4rem 2rem 4rem 2rem;
     }
   }
 
   &__title {
     font-family: var(--p-bold);
-    font-size: 32px;
-    line-height: 38px;
-    margin-bottom: 8px;
+    font-size: 3.2rem;
+    line-height: 3.8rem;
+    margin-bottom: .8rem;
     display: block;
 
     @include x-small-480 {
-      font-size: 25px;
-      line-height: 38px;
+      font-size: 2.5rem;
+      line-height: 3.8rem;
     }
   }
 
   &__subtitle {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
     margin: 0;
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
 
     @include x-small-480 {
       padding-right: 0;
@@ -121,10 +120,10 @@
 
   &__icon-close-wrapper {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 40px;
-    height: 40px;
+    top: .8rem;
+    right: .8rem;
+    width: 4rem;
+    height: 4rem;
     background-color: #f7f7f8;
     border-radius: 50%;
     display: flex;
@@ -141,8 +140,8 @@
   }
 
   &__icon-close {
-    width: 13px;
-    height: 13px;
+    width: 1.3rem;
+    height: 1.3rem;
     fill: #556277;
   }
 }
@@ -158,14 +157,14 @@
 
   &__title {
     font-family: var(--p-bold);
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 2rem;
+    line-height: 2rem;
   }
 }
 
 .success-check,
 .error-check {
-  width: 50px;
+  width: 5rem;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }

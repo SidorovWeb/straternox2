@@ -1,8 +1,8 @@
 .hamburger {
   position: relative;
   display: none;
-  width: 28px;
-  height: 23px;
+  width: 2.8rem;
+  height: 2.3rem;
   cursor: pointer;
 
   @include medium {
@@ -24,8 +24,8 @@
   &__span {
     position: absolute;
     width: inherit;
-    height: 3px;
-    margin-top: 10px;
+    height: .3rem;
+    margin-top: 1rem;
     background-color: $black;
     transform: translateX(0) translateY(0) rotate(0);
     opacity: 1;
@@ -34,20 +34,20 @@
     transition-duration: 0.3s;
 
     &:nth-child(1) {
-      top: -8px;
-      width: 28px;
+      top: -.8rem;
+      width: 2.8rem;
       background-color: $black;
     }
 
     &:nth-child(2) {
       top: 0px;
-      width: 28px;
+      width: 2.8rem;
       background-color: $black;
     }
 
     &:nth-child(3) {
-      top: 8px;
-      width: 28px;
+      top: .8rem;
+      width: 2.8rem;
       background-color: $black;
     }
   }
